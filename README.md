@@ -59,6 +59,7 @@ spec:
         objectStorage:
           bucket: oadp-bucket-0
           prefix: gitlab-backups
+          caCert: <BASE64_ENCODED_CA_CERTIFICATE>  # CA certificate that signed your object store certificate
         provider: aws
 ```
 
