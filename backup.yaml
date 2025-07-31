@@ -1,0 +1,19 @@
+apiVersion: velero.io/v1
+kind: Backup
+metadata:
+  name: gitlab-system-backup-restic
+  namespace: openshift-adp
+spec:
+  csiSnapshotTimeout: 10m0s
+  defaultVolumesToFsBackup: true
+  includeClusterResources: true
+  includedNamespaces:
+  - gitlab-system
+  itemOperationTimeout: 4h0m0s
+  metadata:
+    labels:
+      app: gitlab
+      backup-type: namespace
+  snapshotMoveData: false
+  storageLocation: oadp-dpa-1
+  ttl: 720h
