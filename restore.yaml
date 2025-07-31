@@ -1,0 +1,19 @@
+apiVersion: velero.io/v1
+kind: Restore
+metadata:
+  name: gitlab-system-restore-to-gitlab-system-ns-restic
+  namespace: openshift-adp
+spec:
+  backupName: gitlab-system-backup-restic
+  namespaceMapping:
+    gitlab-system: gitlab-system
+  excludedResources:
+    - events
+    - operatorgroups
+    - subscriptions
+    - installplans
+    - catalogsources
+    - clusterserviceversions
+    - operatorconditions
+  existingResourcePolicy: update
+  restorePVs: true
