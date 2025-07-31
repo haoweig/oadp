@@ -9,6 +9,15 @@ This guide demonstrates how to set up OADP for backing up and restoring applicat
 - NFS storage class configured
 - Cluster-admin privileges
 
+## Disaster Recovery & Backup Portability
+
+### Backup Persistence
+Your backups remain safe in the object store even if:
+- The OADP operator fails
+- The OpenShift cluster crashes
+- You need to migrate to a new cluster
+- You uninstall OADP
+
 ## Setup Steps
 
 ### 1. Install OADP Operator
