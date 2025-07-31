@@ -1,0 +1,29 @@
+apiVersion: oadp.openshift.io/v1alpha1
+kind: DataProtectionApplication
+metadata:
+  name: oadp-dpa
+  namespace: openshift-adp
+spec:
+  configuration:
+    nodeAgent:
+      enable: true
+      uploaderType: restic
+    velero:
+      defaultPlugins:
+        - openshift
+        - aws
+  backupLocations:
+    - velero:
+        config:
+          region: us-east-1
+          s3ForcePathStyle: "true"
+          s3Url: <YOUR_S3_ENDPOINT_URL>
+        credential:
+          key: cloud
+          name: cloud-credentials
+        default: true
+        objectStorage:
+          bucket: oadp-bucket-0
+          prefix: gitlab-backups
+          caCert: <BASE64_ENCODED_CA_CERTIFICATE>  # CA certificate that signed your object store certificate
+        provider: aws
